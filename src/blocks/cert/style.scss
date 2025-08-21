@@ -1,0 +1,50 @@
+@use "../../styles/utils/breakpoints" as b;
+
+.wp-block-scg-cert {
+	align-items: center;
+	grid-template-columns: 1fr;
+
+	@include b.break-mobile-layout {
+		grid-template-areas: "category details";
+		grid-template-columns: 1fr 1fr;
+	}
+
+	&__name {
+		flex-grow: 1;
+	}
+
+	&__category {
+		font-size: var(--wp--preset--font-size--32-alt);
+		font-weight: 700;
+
+		@include b.break-mobile-layout {
+			grid-area: category;
+		}
+	}
+
+	&__badge {
+		width: min(10vw, 150px);
+		height: auto;
+	}
+
+	.wp-block-scg-cert__details {
+		flex-wrap: nowrap;
+
+		@include b.break-mobile-layout {
+			grid-area: details;
+		}
+
+		&:has(.marker) {
+			cursor: pointer;
+
+			&:active :where(p, .marker) {
+				opacity: 0.75;
+			}
+		}
+
+		.wp-block-scg-cert__badge,
+		.marker {
+			flex-shrink: 0;
+		}
+	}
+}

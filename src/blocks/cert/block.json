@@ -1,0 +1,39 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "scg/cert",
+	"version": "0.1.0",
+	"title": "SCG Certificate",
+	"category": "scg",
+	"description": "Information about certificate and ability to display PDF.",
+	"example": {},
+	"attributes": {
+		"name": {
+			"type": "string",
+			"default": "ISO"
+		},
+		"category": {
+			"type": "string"
+		},
+		"img": {
+			"type": "string"
+		},
+		"imgId": {
+			"type": "number"
+		},
+		"cert": {
+			"type":"string"
+		},
+		"certId": {
+			"type": "number"
+		}
+	},
+	"supports": {
+		"interactivity": true
+	},
+	"textdomain": "scg",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScriptModule": "file:./view.ts"
+}
