@@ -16,13 +16,15 @@ $context = array(
 	'page'          => null,
 	'canvas'        => null,
 	'canvasContext' => null,
+	'isLoading'     => false,
 );
 ?>
 <div
 	<?php echo get_block_wrapper_attributes(); // @codingStandardsIgnoreLine. ?>
 	<?php echo wp_interactivity_data_wp_context( $context ); // @codingStandardsIgnoreLine. ?>
 	data-wp-interactive="scg/cert-viewer"
-	data-wp-watch="callbacks.onStateChange"
+	data-wp-watch="callbacks.handleUrlChange"
 >
-	<canvas></canvas>
+	<span data-wp-bind--hidden="!context.isLoading">loading</span>
+	<canvas data-wp-bind--hidden="context.isLoading"></canvas>
 </div>

@@ -17,6 +17,8 @@ interface CertViewer {
 	canvas: HTMLCanvasElement;
 	/* Canvas Context */
 	canvasContext: CanvasRenderingContext2D;
+	/* Loading state */
+	isLoading: boolean;
 }
 
 interface Cert {
@@ -25,6 +27,7 @@ interface Cert {
 }
 
 interface State {
+	/* Currently displayed certificate */
 	url: string;
 }
 
@@ -40,6 +43,7 @@ export const { state, actions, callbacks } = store( 'scg/cert-viewer', {
 			const loadingTask: PDFDocumentLoadingTask =
 				yield getDocument( url );
 
+			ctx.isLoading = true;
 			ctx.pdf = yield loadingTask.promise;
 			ctx.canvas = ref.querySelector( 'canvas' ) as HTMLCanvasElement;
 			ctx.canvasContext = ctx.canvas.getContext(
@@ -61,7 +65,7 @@ export const { state, actions, callbacks } = store( 'scg/cert-viewer', {
 
 			return page.getViewport( { scale } );
 		},
-		onStateChange: () => {
+		handleUrlChange: () => {
 			if ( state.url ) {
 				callbacks.loadDocument( state.url );
 			}
@@ -69,7 +73,8 @@ export const { state, actions, callbacks } = store( 'scg/cert-viewer', {
 	},
 	actions: {
 		*display() {
-			const { page, canvas, canvasContext } = getContext< CertViewer >();
+			const ctx = getContext< CertViewer >();
+			const { page, canvas, canvasContext } = ctx;
 			const viewport = callbacks.getViewport( page );
 			const { width, height } = viewport;
 
@@ -81,6 +86,8 @@ export const { state, actions, callbacks } = store( 'scg/cert-viewer', {
 				canvasContext,
 				viewport,
 			} );
+
+			ctx.isLoading = false;
 		},
 		// Triggered by wp-block-cert.
 		onCertClick: () => {
