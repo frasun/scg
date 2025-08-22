@@ -1,0 +1,19 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "scg/cert-viewer",
+	"version": "0.1.0",
+	"title": "SCG Certificate Viewer",
+	"category": "scg",
+	"icon": "media-interactive",
+	"description": "Block for viewing certificate media.",
+	"example": {},
+	"supports": {
+		"interactivity": true
+	},
+	"textdomain": "scg",
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"viewScriptModule": "file:./view.ts"
+}

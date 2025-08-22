@@ -34,7 +34,7 @@ function add_block_category( $categories ) {
  * Register theme blocks
  */
 function init_blocks() {
-	$blocks = array( 'carousel', 'logo', 'header', 'details', 'accordion', 'cert' );
+	$blocks = array( 'carousel', 'logo', 'header', 'details', 'accordion', 'cert', 'cert-viewer' );
 
 	foreach ( $blocks as $block_name ) {
 		register_block_type( get_theme_file_path( "/build/blocks/{$block_name}" ) );
