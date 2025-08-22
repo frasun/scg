@@ -42,6 +42,7 @@ add_filter( 'render_block_scg/carousel', __NAMESPACE__ . '\modify_carousel_block
 add_filter( 'render_block_scg/header', __NAMESPACE__ . '\modify_header_block_render' );
 add_filter( 'render_block_scg/accordion', __NAMESPACE__ . '\modify_accordion_block_render', 10, 2 );
 add_filter( 'render_block_scg/details', __NAMESPACE__ . '\modify_details_block_render', 10, 2 );
+add_filter( 'render_block_scg/cert', __NAMESPACE__ . '\modify_cert_block_render', 10, 2 );
 
 /**
  * Patterns.

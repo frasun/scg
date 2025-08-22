@@ -34,6 +34,5 @@
 	"textdomain": "scg",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
-	"style": "file:./style-index.css",
-	"viewScriptModule": "file:./view.ts"
+	"style": "file:./style-index.css"
 }

@@ -19,18 +19,26 @@ interface CertViewer {
 	canvasContext: CanvasRenderingContext2D;
 }
 
-const PDF = 'https://scg.local/wp-content/uploads/2025/08/6164540.pdf';
+interface Cert {
+	/* URL to file with certificate */
+	certUrl: string;
+}
+
+interface State {
+	url: string;
+}
 
 GlobalWorkerOptions.workerSrc =
 	'https://unpkg.com/pdfjs-dist@5.4.54/legacy/build/pdf.worker.min.mjs';
 
-const { actions, callbacks } = store( 'scg/cert', {
+export const { state, actions, callbacks } = store( 'scg/cert-viewer', {
+	state: {} as State,
 	callbacks: {
-		*loadDocument() {
+		*loadDocument( url: string ) {
 			const ctx = getContext< CertViewer >();
 			const ref = getElement().ref as HTMLElement;
 			const loadingTask: PDFDocumentLoadingTask =
-				yield getDocument( PDF );
+				yield getDocument( url );
 
 			ctx.pdf = yield loadingTask.promise;
 			ctx.canvas = ref.querySelector( 'canvas' ) as HTMLCanvasElement;
@@ -53,6 +61,11 @@ const { actions, callbacks } = store( 'scg/cert', {
 
 			return page.getViewport( { scale } );
 		},
+		onStateChange: () => {
+			if ( state.url ) {
+				callbacks.loadDocument( state.url );
+			}
+		},
 	},
 	actions: {
 		*display() {
@@ -68,6 +81,14 @@ const { actions, callbacks } = store( 'scg/cert', {
 				canvasContext,
 				viewport,
 			} );
+		},
+		// Triggered by wp-block-cert.
+		onCertClick: () => {
+			const { certUrl } = getContext< Cert >();
+
+			if ( certUrl ) {
+				state.url = certUrl;
+			}
 		},
 	},
 } );

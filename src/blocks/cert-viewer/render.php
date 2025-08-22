@@ -21,8 +21,8 @@ $context = array(
 <div
 	<?php echo get_block_wrapper_attributes(); // @codingStandardsIgnoreLine. ?>
 	<?php echo wp_interactivity_data_wp_context( $context ); // @codingStandardsIgnoreLine. ?>
-	data-wp-interactive="scg/cert"
-	data-wp-init="callbacks.loadDocument"
+	data-wp-interactive="scg/cert-viewer"
+	data-wp-watch="callbacks.onStateChange"
 >
 	<canvas></canvas>
 </div>

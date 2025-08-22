@@ -185,7 +185,7 @@ function modify_accordion_block_render( $block_content ) {
 }
 
 /**
- * Modify scg/accordion block to add name attribute to details.
+ * Add interactivity to scg/accordion block.
  *
  * @param string $block_content The block content.
  * @param array  $block The full block, including name and attributes.
@@ -221,6 +221,31 @@ function modify_details_block_render( $block_content, $block ) {
 		$tags->set_attribute( 'id', $content );
 		$tags->set_attribute( 'data-wp-bind--aria-hidden', '!context.isOpen' );
 		$tags->set_attribute( 'aria-labelledby', $summary );
+	}
+
+	return $tags->get_updated_html();
+}
+
+/**
+ * Add interactivity to scg/cert block.
+ *
+ * @param string $block_content The block content.
+ * @param array  $block The full block, including name and attributes.
+ * @return string
+ */
+function modify_cert_block_render( $block_content, $block ) {
+	$tags    = new \WP_HTML_Tag_Processor( $block_content );
+	$context = array(
+		'certUrl' => $block['attrs']['cert'] ?? false,
+	);
+
+	if ( $tags->next_tag( array( 'class_name' => 'wp-block-scg-cert' ) ) ) {
+		$tags->set_attribute( 'data-wp-interactive', 'scg/cert-viewer' );
+		$tags->set_attribute( 'data-wp-context', wp_json_encode( $context ) );
+	}
+
+	if ( $tags->next_tag( array( 'class_name' => 'wp-block-scg-cert__details' ) ) ) {
+		$tags->set_attribute( 'data-wp-on-async--click', 'actions.onCertClick' );
 	}
 
 	return $tags->get_updated_html();
