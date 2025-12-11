@@ -80,9 +80,3 @@ add_action( 'wp_head', __NAMESPACE__ . '\add_responsive_section_images', 1 );
  * Admin.
  */
 add_action( 'login_enqueue_scripts', __NAMESPACE__ . '\enqueue_login_page_assets' );
-
-/**
- * Plugins.
- */
-add_action( 'trp_save_editor_translations_gettext_strings', __NAMESPACE__ . '\purge_cache' );
-add_action( 'trp_save_editor_translations_regular_strings', __NAMESPACE__ . '\purge_cache' );

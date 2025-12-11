@@ -77,10 +77,3 @@ function mask_emails( $content ) {
 		$content
 	);
 }
-
-/**
- * Purge LSCache.
- */
-function purge_cache() {
-	do_action( 'litespeed_purge_all' );
-}
