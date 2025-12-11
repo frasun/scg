@@ -3,9 +3,9 @@
 	"version": "1.0.0",
 	"main": "",
 	"scripts": {
-		"start": "wp-scripts start --experimental-modules",
-		"build": "NODE_ENV=production wp-scripts build --experimental-modules",
-		"build:prod": "npm run lint && npm run build --experimental-modules",
+		"start": "wp-scripts start --experimental-modules --blocks-manifest",
+		"build": "NODE_ENV=production wp-scripts build --experimental-modules --blocks-manifest",
+		"build:prod": "npm run lint && npm run build --experimental-modules --blocks-manifest",
 		"lint:js": "wp-scripts format && wp-scripts lint-js --fix",
 		"lint:style": "wp-scripts lint-style --fix",
 		"lint": "npm run lint:js && npm run lint:style",

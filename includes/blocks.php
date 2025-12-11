@@ -34,12 +34,10 @@ function add_block_category( $categories ) {
  * Register theme blocks
  */
 function init_blocks() {
-	$blocks = array( 'carousel', 'logo', 'header', 'details', 'accordion', 'cert', 'cert-viewer', 'contact', 'job-offer', 'scroll-badge', 'data-counter' );
-	sort( $blocks );
-
-	foreach ( $blocks as $block_name ) {
-		register_block_type( get_theme_file_path( "/build/blocks/{$block_name}" ) );
-	}
+	wp_register_block_types_from_metadata_collection(
+		get_template_directory() . '/build/blocks',
+		get_template_directory() . '/build/blocks-manifest.php'
+	);
 }
 
 /**
