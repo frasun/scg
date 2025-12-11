@@ -15,13 +15,13 @@
 	"license": "ISC",
 	"description": "",
 	"devDependencies": {
-		"@wordpress/icons": "^10.25.0",
-		"@wordpress/scripts": "^30.17.0",
+		"@wordpress/icons": "^11.3.0",
+		"@wordpress/scripts": "^31.1.0",
 		"path": "^0.12.7",
 		"webpack-remove-empty-scripts": "^1.1.1"
 	},
 	"dependencies": {
-		"@wordpress/interactivity": "^6.25.0",
+		"@wordpress/interactivity": "^6.36.0",
 		"clsx": "^2.1.1",
 		"gsap": "^3.13.0",
 		"pdfjs-dist": "^5.4.54"
