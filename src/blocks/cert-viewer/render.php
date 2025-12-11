@@ -35,12 +35,12 @@ $icons = array(
 	<?php echo get_block_wrapper_attributes(); // @codingStandardsIgnoreLine. ?>
 	<?php echo wp_interactivity_data_wp_context( $context ); // @codingStandardsIgnoreLine. ?>
 	data-wp-interactive="scg/cert-viewer"
-	data-wp-watch--url="callbacks.handleUrlChange"
-	data-wp-watch--open="callbacks.handleModalOpen"
+	data-wp-watch---url="callbacks.handleUrlChange"
+	data-wp-watch---open="callbacks.handleModalOpen"
 	data-wp-bind--hidden="!state.isModalOpen"
 	data-wp-bind--inert="!state.isModalOpen"
-	data-wp-on-async-document--keydown="callbacks.escClose"
-	data-wp-init--animation="callbacks.setupAnimation"
+	data-wp-on-document--keydown="callbacks.escClose"
+	data-wp-init---animation="callbacks.setupAnimation"
 	data-wp-init="callbacks.setupPDFJS"
 	hidden>
 	<div class="wp-block-scg-cert-viewer__modal" data-wp-bind--hidden="state.documentLoading">
@@ -48,17 +48,17 @@ $icons = array(
 			<div class="wp-block-scg-cert-viewer__error" data-wp-bind--hidden="!state.error" aria-hidden="!state.error" role="alert"><?php esc_html_e( 'A problem occured while loading this document. Please try again later.', 'scg' ); ?></div>
 			<canvas data-wp-bind--hidden="state.error" aria-hidden="state.error" aria-label="Certificate document"></canvas>
 		</div>
-		<button class="wp-block-scg-cert-viewer__control wp-block-scg-cert-viewer__control--prev" type="button" data-wp-on-async--click="actions.prevPage" data-wp-bind--disabled="!state.hasPrevPage" data-wp-bind--hidden="!state.hasPages" wp-bind--inert="!state.hasPrevPage" aria-label="<?php esc_html_e( 'Previous page', 'scg' ); ?>">
+		<button class="wp-block-scg-cert-viewer__control wp-block-scg-cert-viewer__control--prev" type="button" data-wp-on--click="actions.prevPage" data-wp-bind--disabled="!state.hasPrevPage" data-wp-bind--hidden="!state.hasPages" wp-bind--inert="!state.hasPrevPage" aria-label="<?php esc_html_e( 'Previous page', 'scg' ); ?>">
 			<?php echo wp_kses_svg( $icons['prev'] ); // @codingStandardsIgnoreLine. ?>
 		</button>
-		<button class="wp-block-scg-cert-viewer__control wp-block-scg-cert-viewer__control--next" type="button" data-wp-on-async--click="actions.nextPage" data-wp-bind--disabled="!state.hasNextPage" data-wp-bind--hidden="!state.hasPages" wp-bind--inert="!state.hasNextPage" aria-label="<?php esc_html_e( 'Next page', 'scg' ); ?>">
+		<button class="wp-block-scg-cert-viewer__control wp-block-scg-cert-viewer__control--next" type="button" data-wp-on--click="actions.nextPage" data-wp-bind--disabled="!state.hasNextPage" data-wp-bind--hidden="!state.hasPages" wp-bind--inert="!state.hasNextPage" aria-label="<?php esc_html_e( 'Next page', 'scg' ); ?>">
 			<?php echo wp_kses_svg( $icons['next'] ); // @codingStandardsIgnoreLine. ?>
 		</button>
-		<button class="wp-block-scg-cert-viewer__control wp-block-scg-cert-viewer__control--close" type="button" data-wp-on-async--click="actions.closeModal" aria-label="<?php esc_html_e( 'Close', 'scg' ); ?>"></button>
-		<button class="wp-block-scg-cert-viewer__control wp-block-scg-cert-viewer__control--zoom-in" type="button" data-wp-on-async--click="actions.zoomIn" data-wp-bind--disabled="!state.canZoomIn" data-wp-bind--hidden="state.error" wp-bind--inert="state.error" aria-label="<?php esc_html_e( 'Zoom In', 'scg' ); ?>">
+		<button class="wp-block-scg-cert-viewer__control wp-block-scg-cert-viewer__control--close" type="button" data-wp-on--click="actions.closeModal" aria-label="<?php esc_html_e( 'Close', 'scg' ); ?>"></button>
+		<button class="wp-block-scg-cert-viewer__control wp-block-scg-cert-viewer__control--zoom-in" type="button" data-wp-on--click="actions.zoomIn" data-wp-bind--disabled="!state.canZoomIn" data-wp-bind--hidden="state.error" wp-bind--inert="state.error" aria-label="<?php esc_html_e( 'Zoom In', 'scg' ); ?>">
 			<?php echo wp_kses_svg( $icons['zoom_in'] ); // @codingStandardsIgnoreLine. ?>
 		</button>
-		<button class="wp-block-scg-cert-viewer__control wp-block-scg-cert-viewer__control--zoom-out" type="button" data-wp-on-async--click="actions.zoomOut" data-wp-bind--disabled="!state.canZoomOut" data-wp-bind--hidden="state.error" wp-bind--inert="state.error" aria-label="<?php esc_html_e( 'Zoom Out', 'scg' ); ?>">
+		<button class="wp-block-scg-cert-viewer__control wp-block-scg-cert-viewer__control--zoom-out" type="button" data-wp-on--click="actions.zoomOut" data-wp-bind--disabled="!state.canZoomOut" data-wp-bind--hidden="state.error" wp-bind--inert="state.error" aria-label="<?php esc_html_e( 'Zoom Out', 'scg' ); ?>">
 			<?php echo wp_kses_svg( $icons['zoom_out'] ); // @codingStandardsIgnoreLine. ?>
 		</button>
 	</div>

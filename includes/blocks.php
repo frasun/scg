@@ -133,7 +133,7 @@ function modify_header_block_render( $block_content ) {
 
 	if ( $tags->next_tag( array( 'class_name' => 'is-style-transparent' ) ) ) {
 		$tags->set_attribute( 'data-wp-bind--data-is-scrolled', 'context.isScrolled' );
-		$tags->set_attribute( 'data-wp-on-async-document--scroll', 'callbacks.onScroll' );
+		$tags->set_attribute( 'data-wp-on-document--scroll', 'callbacks.onScroll' );
 	}
 
 	return $tags->get_updated_html();
@@ -197,7 +197,7 @@ function modify_accordion_block_render( $block_content ) {
 			}
 
 			if ( $depth === $depth_summary && $tags->has_class( 'wp-block-scg-details__summary' ) ) {
-				$tags->set_attribute( 'data-wp-on-async--click', 'actions.emitToggle' );
+				$tags->set_attribute( 'data-wp-on--click', 'actions.emitToggle' );
 				$tags->set_attribute( 'data-wp-on--keydown', 'actions.emitSpaceToggle' );
 			}
 		}
@@ -237,7 +237,7 @@ function modify_details_block_render( $block_content, $block ) {
 	}
 
 	if ( $tags->next_tag( array( 'class_name' => 'wp-block-scg-details__summary' ) ) ) {
-		$tags->set_attribute( 'data-wp-on-async--click', 'actions.toggle' );
+		$tags->set_attribute( 'data-wp-on--click', 'actions.toggle' );
 		$tags->set_attribute( 'data-wp-on--keydown', 'actions.spaceToggle' );
 		$tags->set_attribute( 'id', $summary );
 		$tags->set_attribute( 'data-wp-bind--aria-expanded', 'context.isOpen' );

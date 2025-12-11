@@ -26,7 +26,7 @@ $context   = array(
 	<?php echo wp_interactivity_data_wp_context( $context ); // @codingStandardsIgnoreLine. ?>
 	data-wp-interactive="scg/header"
 	data-wp-bind--data-is-open="context.isOpen"
-	data-wp-on-async-window--resize="callbacks.onResize"
+	data-wp-on-window--resize="callbacks.onResize"
 	data-wp-watch="callbacks.onChange"
 	data-wp-init="callbacks.onInit">
 	<div class="wp-block-scg-header__bg--scroll"></div>

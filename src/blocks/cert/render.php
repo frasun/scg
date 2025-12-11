@@ -24,7 +24,7 @@ $name     = $attributes['name'] ?? '';
 	<?php echo get_block_wrapper_attributes(array('class' => 'is-layout-grid')); // @codingStandardsIgnoreLine. ?>
 	<?php echo wp_interactivity_data_wp_context( $context ); // @codingStandardsIgnoreLine. ?>
 	data-wp-interactive="scg/cert-viewer"
-	data-wp-on-async--click="actions.onCertClick"
+	data-wp-on--click="actions.onCertClick"
 	tabindex="0">
 		<?php if ( isset( $category ) ) : ?>
 			<div class="wp-block-scg-cert__category"><span><?php echo esc_html( $category ); ?></span></div>
