@@ -43,6 +43,20 @@ function init_blocks() {
 }
 
 /**
+ * Load blocks in head. That is needed for blocks' view script modules that rely on 'init' and 'watch' callbacks.
+ * WordPress 6.9 introduced loading script modules in footer with low fetch priority.
+ *
+ * @todo Revisit in the next releases of WordPress.
+ */
+function load_modules_in_head() {
+	$blocks = array( 'carousel', 'header', 'details', 'cert-viewer', 'contact', 'data-counter' );
+
+	foreach ( $blocks as $block_name ) {
+		wp_script_modules()->set_in_footer( "scg-{$block_name}-view-script-module", false );
+	}
+}
+
+/**
  * Modify core/cover block to include adminbar.
  *
  * @param string $block_content The block content.

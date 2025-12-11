@@ -28,9 +28,7 @@ $context   = array(
 	data-wp-bind--data-is-open="context.isOpen"
 	data-wp-on-async-window--resize="callbacks.onResize"
 	data-wp-watch="callbacks.onChange"
-	data-wp-init--init="callbacks.onInit"
-	data-wp-init--click="callbacks.handleLinkClick"
-	data-wp-init--animation="callbacks.initAnimation">
+	data-wp-init="callbacks.onInit">
 	<div class="wp-block-scg-header__bg--scroll"></div>
 	<div class="wp-block-scg-header__bg"></div>
 	<?php echo wp_kses_svg( $content ); // @codingStandardsIgnoreLine. ?>

@@ -49,6 +49,9 @@ const { callbacks } = store( 'scg/header', {
 			ctx.element = getElement().ref as HTMLElement;
 			ctx.isScrolled = window.scrollY > 0;
 			ctx.animationTimeline = gsap.timeline();
+
+			callbacks.handleLinkClick();
+			callbacks.initAnimation();
 		},
 		// Handle context changes.
 		onChange: () => {

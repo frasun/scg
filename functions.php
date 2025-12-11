@@ -48,6 +48,7 @@ add_filter( 'render_block_scg/details', __NAMESPACE__ . '\inline_icons_in_detail
 add_filter( 'render_block_scg/cert-viewer', __NAMESPACE__ . '\modify_cert_viewer_block_render' );
 add_filter( 'render_block_scg/contact', __NAMESPACE__ . '\modify_contact_block_render', 10, 2 );
 add_filter( 'render_block_scg/scroll-badge', __NAMESPACE__ . '\modify_scroll_badge_block_render' );
+add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\load_modules_in_head' );
 
 /**
  * Patterns.
