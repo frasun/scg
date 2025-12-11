@@ -28,11 +28,13 @@ const DEFAULT_ZOOM = 8;
 const PREFERRED_ZOOM = 15;
 const PIN = `<svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12.8281" r="12" fill="#F9A51A"/></svg>`;
 
-store( 'scg/contact', {
+const { callbacks } = store( 'scg/contact', {
 	callbacks: {
-		setupMaps: () => {
+		*setupMaps() {
 			const { apiKey } = getContext< Contact >();
-			fetchMapsAPI( apiKey );
+			yield fetchMapsAPI( apiKey );
+
+			callbacks.initMap();
 		},
 		*initMap() {
 			const { lat, lng, mapId } = getContext< Contact >();

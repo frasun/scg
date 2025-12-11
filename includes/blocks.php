@@ -339,8 +339,7 @@ function modify_contact_block_render( $block_content, $block ) {
 	}
 
 	if ( $tags->next_tag( array( 'class_name' => 'wp-block-scg-contact__map' ) ) ) {
-		$tags->set_attribute( 'data-wp-init--setup', 'callbacks.setupMaps' );
-		$tags->set_attribute( 'data-wp-init', 'callbacks.initMap' );
+		$tags->set_attribute( 'data-wp-init', 'callbacks.setupMaps' );
 	}
 
 	return $tags->get_updated_html();
