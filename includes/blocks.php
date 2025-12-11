@@ -309,6 +309,17 @@ function modify_cert_viewer_block_render( $block_content ) {
 }
 
 /**
+ * Manually enqueue cert-viewer block view script & styles.
+ * These assets are removed by WordPress because it assumes the block is hidden.
+ *
+ * @see modify_cert_viewer_block_render
+ */
+function enqueue_cert_viewer_assets() {
+	wp_enqueue_script_module( 'scg-cert-viewer-view-script-module' );
+	wp_enqueue_style( 'scg-cert-viewer-style', );
+}
+
+/**
  * Add interactivity to scg/contact block.
  *
  * @param string $block_content The block content.
