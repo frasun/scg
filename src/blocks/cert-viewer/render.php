@@ -40,7 +40,8 @@ $icons = array(
 	data-wp-bind--hidden="!state.isModalOpen"
 	data-wp-bind--inert="!state.isModalOpen"
 	data-wp-on-async-document--keydown="callbacks.escClose"
-	data-wp-init="callbacks.setupAnimation"
+	data-wp-init--animation="callbacks.setupAnimation"
+	data-wp-init="callbacks.setupPDFJS"
 	hidden>
 	<div class="wp-block-scg-cert-viewer__modal" data-wp-bind--hidden="state.documentLoading">
 		<div class="wp-block-scg-cert-viewer__canvas" tabindex="0">

@@ -4,9 +4,6 @@ import type {
 	PDFDocumentLoadingTask,
 } from 'pdfjs-dist';
 import { getContext, getElement, store } from '@wordpress/interactivity';
-// @ts-ignore
-// eslint-disable-next-line import/no-unresolved
-import { getDocument, GlobalWorkerOptions } from 'pdfjs';
 import { WITH_MOTION_QUERY } from '../../scripts/constants.ts';
 import { actions as themeActions } from '../../scripts/scg.ts';
 import gsap from 'gsap';
@@ -59,9 +56,7 @@ const SCALE_FACTOR = 2;
 const CANVAS = '.wp-block-scg-cert-viewer__canvas';
 const BACKDROP = '.wp-block-scg-cert-viewer__backdrop';
 const MODAL = '.wp-block-scg-cert-viewer__modal';
-
-GlobalWorkerOptions.workerSrc =
-	'https://unpkg.com/pdfjs-dist@5.4.54/legacy/build/pdf.worker.min.mjs';
+const PDFJS_ERROR = 'Error loading PDFJS';
 
 export const { state, actions, callbacks } = store( 'scg/cert-viewer', {
 	state: {
@@ -159,6 +154,10 @@ export const { state, actions, callbacks } = store( 'scg/cert-viewer', {
 			state.scale = undefined;
 			state.error = undefined;
 		},
+		getDocument( url: string ) {
+			state.error = PDFJS_ERROR;
+			state.url = url;
+		},
 	},
 	callbacks: {
 		*display() {
@@ -188,7 +187,7 @@ export const { state, actions, callbacks } = store( 'scg/cert-viewer', {
 			const ctx = getContext< CertViewer >();
 			const ref = getElement().ref as HTMLElement;
 			const loadingTask: PDFDocumentLoadingTask =
-				yield getDocument( url );
+				yield actions.getDocument( url );
 
 			ctx.pdf = yield loadingTask.promise;
 			state.pages = ctx.pdf.numPages;
@@ -220,6 +219,10 @@ export const { state, actions, callbacks } = store( 'scg/cert-viewer', {
 			state.pageLoading = false;
 		},
 		*handleUrlChange() {
+			if ( state.error ) {
+				return;
+			}
+
 			if ( ! state.url.length ) {
 				actions.closeModal();
 				return;
@@ -331,6 +334,17 @@ export const { state, actions, callbacks } = store( 'scg/cert-viewer', {
 				},
 				element
 			);
+		},
+		*setupPDFJS() {
+			const { getDocument, GlobalWorkerOptions } = yield import(
+				// @ts-ignore
+				'pdfjs'
+			);
+
+			GlobalWorkerOptions.workerSrc =
+				'https://unpkg.com/pdfjs-dist@5.4.54/legacy/build/pdf.worker.min.mjs';
+
+			actions.getDocument = getDocument;
 		},
 	},
 } );
