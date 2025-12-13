@@ -2,8 +2,10 @@
 
 import { useBlockProps } from '@wordpress/block-editor';
 import Marker from '../cert/marker';
+import type { BlockSaveProps } from '@wordpress/blocks';
+import type { JobOfferBlock } from '.';
 
-export default ( { attributes } ) => {
+export default ( { attributes }: BlockSaveProps< JobOfferBlock > ) => {
 	const blockProps = useBlockProps.save();
 	const { url, position } = attributes;
 	return (

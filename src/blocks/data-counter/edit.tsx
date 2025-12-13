@@ -5,9 +5,14 @@ import {
 	__experimentalNumberControl as NumberControl, // eslint-disable-line
 	__experimentalInputControl as InputControl, // eslint-disable-line
 } from '@wordpress/components';
-import formatNumber from './format.ts';
+import formatNumber from './format';
+import type { BlockEditProps } from '@wordpress/blocks';
+import type { DataCounterBlock } from '.';
 
-export default ( { attributes, setAttributes } ) => {
+export default ( {
+	attributes,
+	setAttributes,
+}: BlockEditProps< DataCounterBlock > ) => {
 	const { value, step, prefix, suffix } = attributes;
 	const displayedValue = formatNumber( value, document.documentElement.lang );
 	const blockProps = useBlockProps();

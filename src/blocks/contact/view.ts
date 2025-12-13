@@ -1,14 +1,14 @@
 import { getContext, getElement, store } from '@wordpress/interactivity';
-import fetchMapsAPI from './maps.ts';
+import fetchMapsAPI from './maps';
 
 interface Contact {
-	/* Map address latitude */
+	/** Map address latitude */
 	lat: number;
-	/* Map address longitude */
+	/** Map address longitude */
 	lng: number;
-	/* Maps API Key */
+	/** Maps API Key */
 	apiKey: string;
-	/* Map ID */
+	/** Map ID */
 	mapId: string;
 }
 

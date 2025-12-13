@@ -4,49 +4,49 @@ import type {
 	PDFDocumentLoadingTask,
 } from 'pdfjs-dist';
 import { getContext, getElement, store } from '@wordpress/interactivity';
-import { WITH_MOTION_QUERY } from '../../scripts/constants.ts';
-import { actions as themeActions } from '../../scripts/scg.ts';
+import { WITH_MOTION_QUERY } from '../../scripts/constants';
+import { actions as themeActions } from '../../scripts/scg';
 import gsap from 'gsap';
 
 interface CertViewer {
-	/* PDFJS document object */
+	/** PDFJS document object */
 	pdf: PDFDocumentProxy;
-	/* PDFJS page object */
+	/** PDFJS page object */
 	page: PDFPageProxy;
-	/* Canvas HTML element */
+	/** Canvas HTML element */
 	canvas: HTMLCanvasElement;
-	/* Canvas Context */
+	/** Canvas Context */
 	canvasContext: CanvasRenderingContext2D;
-	/* Certificate url */
+	/** Certificate url */
 	certUrl: string;
 }
 
 interface State {
-	/* Currently displayed certificate */
+	/** Currently displayed certificate */
 	url: string;
-	/* Modal visible state */
+	/** Modal visible state */
 	isModalOpen: boolean;
-	/* Loading state */
+	/** Loading state */
 	isLoading: boolean;
-	/* Document loading state */
+	/** Document loading state */
 	documentLoading: boolean;
-	/* Page loading state */
+	/** Page loading state */
 	pageLoading: boolean;
-	/* Page rendering state */
+	/** Page rendering state */
 	isRendering: boolean;
-	/* Currently displayed page */
+	/** Currently displayed page */
 	currentPage: number;
-	/* Total document pages */
+	/** Total document pages */
 	pages: number;
-	/* Zoom level [ZOOM_MAX, ZOOM_MIN] */
+	/** Zoom level [ZOOM_MAX, ZOOM_MIN] */
 	zoom: number;
-	/* Document initial scale */
+	/** Document initial scale */
 	scale?: number;
-	/* Error message */
+	/** Error message */
 	error?: string;
-	/* Active trigger element */
+	/** Active trigger element */
 	previousFocus: HTMLElement | null;
-	/* Animation object */
+	/** Animation object */
 	animation: gsap.core.Timeline;
 }
 

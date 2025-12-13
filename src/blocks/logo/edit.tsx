@@ -2,8 +2,13 @@ import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, ToggleControl, TextControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import Logo from './logo';
+import type { BlockEditProps } from '@wordpress/blocks';
+import type { LogoBlock } from '.';
 
-export default function ( { attributes, setAttributes } ) {
+export default function ( {
+	attributes,
+	setAttributes,
+}: BlockEditProps< LogoBlock > ) {
 	const { isLink, url } = attributes;
 
 	const setUrl = ( value ) => {

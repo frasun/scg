@@ -1,23 +1,23 @@
 import { store, getElement, getContext } from '@wordpress/interactivity';
 import gsap from 'gsap';
-import { WITH_MOTION_QUERY } from '../../scripts/constants.ts';
+import { WITH_MOTION_QUERY } from '../../scripts/constants';
 
 const CONTENT = ':scope > .wp-block-scg-details__content';
 const CONTENT_ELEMENTS =
 	':scope > .wp-block-scg-details__content .wp-block-column > *';
 
 interface Details {
-	/* is open */
+	/** Block open state */
 	isOpen: boolean;
-	/* animation object */
+	/** Animation object */
 	animation: gsap.core.Timeline;
-	/* id of accordion */
+	/** ID of accordion */
 	accordion?: string;
-	/* key in array of accordion children */
+	/** Key in array of accordion children */
 	key?: number;
 }
 
-/* { [accordionId]: activeElement } */
+/** { [accordionId]: activeElement } */
 type State = Record< string, number[] >;
 
 const { state, actions } = store( 'scg/details', {

@@ -38,7 +38,7 @@ module.exports = [
 			'scg-editor-scripts': path.resolve(
 				process.cwd(),
 				'src/scripts',
-				'scg-editor.js'
+				'scg-editor.ts'
 			),
 			'scg-admin-login': path.resolve(
 				process.cwd(),

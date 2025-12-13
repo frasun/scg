@@ -1,6 +1,6 @@
 import { store, getElement, getContext } from '@wordpress/interactivity';
 import { gsap } from 'gsap';
-import { state as themeState } from '../../scripts/scg.ts';
+import { state as themeState } from '../../scripts/scg';
 
 const MOBILE_WIDTH = 781;
 const MOBILE_HEIGHT = 799;
@@ -13,9 +13,13 @@ const MOBILE_NAVIGATION = '.wp-block-scg-header__bg';
 const LOGO_PATH = '.wp-block-scg-logo .scg-logo--main';
 
 interface HeaderContext {
+	/** Mobile menu open state */
 	isOpen: boolean;
+	/** Header scrolled state */
 	isScrolled: boolean;
+	/** Animation timeline object */
 	animationTimeline?: gsap.core.Timeline;
+	/** Header element */
 	element: HTMLElement;
 }
 
