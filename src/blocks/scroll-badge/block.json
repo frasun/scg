@@ -10,6 +10,7 @@
 	"supports": {
 		"interactivity": true
 	},
+	"attributes": {},
 	"textdomain": "scg",
 	"editorScript": "file:./index.js",
 	"style": "file:./style-index.css"

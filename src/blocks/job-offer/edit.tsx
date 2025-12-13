@@ -9,8 +9,13 @@ import { __ } from '@wordpress/i18n';
 import Marker from '../cert/marker';
 
 import './style.scss';
+import type { BlockEditProps } from '@wordpress/blocks';
+import type { JobOfferBlock } from '.';
 
-export default ( { attributes, setAttributes } ) => {
+export default ( {
+	attributes,
+	setAttributes,
+}: BlockEditProps< JobOfferBlock > ) => {
 	const blockProps = useBlockProps();
 	const { url, position } = attributes;
 

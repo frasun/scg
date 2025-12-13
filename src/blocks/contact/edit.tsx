@@ -9,7 +9,13 @@ import {
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
-export default ( { attributes, setAttributes } ) => {
+import type { BlockEditProps } from '@wordpress/blocks';
+import type { ContactBlock } from '.';
+
+export default ( {
+	attributes,
+	setAttributes,
+}: BlockEditProps< ContactBlock > ) => {
 	const blockProps = useBlockProps();
 	const innerBlockProps = useInnerBlocksProps( {
 		className: 'wp-block-scg-contact__content',

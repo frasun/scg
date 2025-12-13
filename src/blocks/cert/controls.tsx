@@ -13,11 +13,13 @@ import {
 } from '@wordpress/components';
 import { Icon, page } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
+import type { BlockEditProps } from '@wordpress/blocks';
+import type { CertBlock } from '.';
 
 export default ( {
 	setAttributes,
 	attributes: { category, img, imgId, certId, certFilename, name },
-} ) => (
+}: BlockEditProps< CertBlock > ) => (
 	<InspectorControls>
 		<PanelBody title={ __( 'Certificate details' ) }>
 			<InputControl

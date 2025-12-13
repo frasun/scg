@@ -36,6 +36,7 @@
 			}
 		]
 	},
+	"attributes": {},
 	"supports": {
 		"interactivity": true,
 		"layout": true,

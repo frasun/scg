@@ -5,8 +5,10 @@ import {
 	RichText,
 } from '@wordpress/block-editor';
 import MarkerIcon from './marker';
+import type { BlockSaveProps } from '@wordpress/blocks';
+import type { DetailsBlock } from '.';
 
-export default ( { attributes } ) => {
+export default ( { attributes }: BlockSaveProps< DetailsBlock > ) => {
 	const { icon, hasIcon } = attributes;
 	const title = attributes.summary ?? __( 'SCG Details', 'scg' );
 

@@ -15,9 +15,12 @@
 	"license": "ISC",
 	"description": "",
 	"devDependencies": {
+		"@types/wordpress__block-editor": "^14.21.2",
+		"@types/wordpress__blocks": "^12.5.18",
 		"@wordpress/icons": "^11.3.0",
 		"@wordpress/scripts": "^31.1.0",
 		"path": "^0.12.7",
+		"typescript": "~5.3.0",
 		"webpack-remove-empty-scripts": "^1.1.1"
 	},
 	"dependencies": {

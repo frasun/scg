@@ -1,8 +1,9 @@
 import { __ } from '@wordpress/i18n';
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 import { useEffect, useRef, useState } from '@wordpress/element';
+import type { TemplateArray } from '@wordpress/blocks';
 
-const TEMPLATE = [
+const TEMPLATE: TemplateArray = [
 	[
 		'scg/logo',
 		{
@@ -65,7 +66,7 @@ export default () => {
 	};
 
 	useEffect( () => {
-		const { ownerDocument } = ref.current;
+		const { ownerDocument } = ref.current as HTMLElement;
 		const handleScroll = () => {
 			setIsScrolled( ownerDocument.documentElement.scrollTop > 0 );
 		};

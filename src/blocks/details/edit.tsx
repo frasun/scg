@@ -15,8 +15,11 @@ import {
 	ToolbarButton,
 } from '@wordpress/components';
 import Marker from './marker';
+import type { BlockEditProps, TemplateArray } from '@wordpress/blocks';
+import type { InnerBlocks } from '@wordpress/block-editor';
+import type { DetailsBlock } from '.';
 
-const TEMPLATE = [
+const TEMPLATE: TemplateArray = [
 	[
 		'core/columns',
 		{
@@ -63,7 +66,10 @@ const TEMPLATE = [
 	],
 ];
 
-export default ( { attributes, setAttributes } ) => {
+export default ( {
+	attributes,
+	setAttributes,
+}: BlockEditProps< DetailsBlock > ) => {
 	const { isOpen, summary, hasIcon, icon, iconId } = attributes;
 	const blockProps = useBlockProps( {
 		'data-open': isOpen.toString(),
@@ -72,7 +78,7 @@ export default ( { attributes, setAttributes } ) => {
 		template: TEMPLATE,
 		templateLock: 'insert',
 		className: 'wp-block-scg-details__content',
-	} );
+	} as InnerBlocks.Props & { className?: string } );
 
 	return (
 		<>
@@ -132,6 +138,7 @@ export default ( { attributes, setAttributes } ) => {
 							) }
 							placeholder={ __( 'Section title', 'scg' ) }
 							allowedFormats={ [] }
+							// @ts-ignore
 							withoutInteractiveFormatting
 							disableLineBreaks
 							value={ summary }

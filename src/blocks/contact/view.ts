@@ -1,5 +1,5 @@
 import { getContext, getElement, store } from '@wordpress/interactivity';
-import fetchMapsAPI from './maps.ts';
+import fetchMapsAPI from './maps';
 
 interface Contact {
 	/* Map address latitude */

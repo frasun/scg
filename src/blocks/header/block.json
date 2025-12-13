@@ -16,6 +16,7 @@
 			"label": "Transparent"
 		}
 	],
+	"attributes": {},
 	"textdomain": "scg",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",

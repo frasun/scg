@@ -1,8 +1,10 @@
 import { useBlockProps } from '@wordpress/block-editor';
 import Marker from './marker';
 import Controls from './controls';
+import type { BlockEditProps } from '@wordpress/blocks';
+import type { CertBlock } from '.';
 
-export default ( props ) => {
+export default ( props: BlockEditProps< CertBlock > ) => {
 	const blockProps = useBlockProps( {
 		className: 'is-layout-grid',
 	} );

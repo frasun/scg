@@ -38,6 +38,7 @@
 			}
 		]
 	},
+	"attributes": {},
 	"allowedBlocks": [ "core/image" ],
 	"supports": {
 		"html": false,

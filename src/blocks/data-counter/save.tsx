@@ -1,7 +1,9 @@
 import { useBlockProps } from '@wordpress/block-editor';
-import formatNumber from './format.ts';
+import formatNumber from './format';
+import type { BlockSaveProps } from '@wordpress/blocks';
+import type { DataCounterBlock } from '.';
 
-export default ( { attributes } ) => {
+export default ( { attributes }: BlockSaveProps< DataCounterBlock > ) => {
 	const { value, prefix, suffix } = attributes;
 	const displayedValue = formatNumber( value );
 	const blockProps = useBlockProps.save();
