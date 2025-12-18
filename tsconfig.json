@@ -19,6 +19,6 @@
 			"@/types": [ "./types.ts" ]
 		}
 	},
-	"include": [ "src/**/*" ],
+	"include": [ "src/**/*", "tests/js/data-counter/save.test.js" ],
 	"exclude": [ "node_modules", "build" ]
 }

@@ -9,14 +9,20 @@
 		"lint:js": "wp-scripts format && wp-scripts lint-js --fix",
 		"lint:style": "wp-scripts lint-style --fix",
 		"lint": "npm run lint:js && npm run lint:style",
-		"packages-update": "wp-scripts packages-update"
+		"packages-update": "wp-scripts packages-update",
+		"test:js": "wp-scripts --no-deprecation test-unit-js",
+		"env:start": "wp-env start",
+		"test:php": "wp-env run tests-cli --env-cwd=wp-content/themes/scg vendor/bin/phpunit"
 	},
 	"author": "seekthekingdom",
 	"license": "ISC",
 	"description": "",
 	"devDependencies": {
+		"@testing-library/jest-dom": "^6.9.1",
+		"@testing-library/react": "^16.3.1",
 		"@types/wordpress__block-editor": "^14.21.2",
 		"@types/wordpress__blocks": "^12.5.18",
+		"@wordpress/env": "^10.36.0",
 		"@wordpress/icons": "^11.3.0",
 		"@wordpress/scripts": "^31.1.0",
 		"path": "^0.12.7",
@@ -25,7 +31,6 @@
 	},
 	"dependencies": {
 		"@wordpress/interactivity": "^6.36.0",
-		"clsx": "^2.1.1",
 		"gsap": "^3.13.0",
 		"pdfjs-dist": "^5.4.54"
 	}

@@ -1,4 +1,13 @@
-export default ( value: number, locale = 'en-US' ) => {
+const DEFAULT_LOCALE = 'en-US';
+
+export default ( value: number, locale = DEFAULT_LOCALE ) => {
+	let language = locale;
+	try {
+		new Intl.Locale( locale );
+	} catch {
+		language = DEFAULT_LOCALE;
+	}
+
 	const absValue = Math.abs( value );
 	let scaled = value;
 	let suffix = '';
@@ -11,7 +20,7 @@ export default ( value: number, locale = 'en-US' ) => {
 		suffix = 'K';
 	}
 
-	const val = new Intl.NumberFormat( locale, {
+	const val = new Intl.NumberFormat( language, {
 		maximumFractionDigits: 1,
 	} ).format( scaled );
 
