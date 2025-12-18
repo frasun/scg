@@ -7,9 +7,13 @@ import { pin as icon } from '@wordpress/icons';
 import './style.scss';
 
 export interface DataCounterBlock {
+	/** End display value */
 	value: number;
+	/** Value increment size */
 	step: number;
+	/** Display prefix */
 	prefix: string;
+	/** Display suffix */
 	suffix: string;
 }
 

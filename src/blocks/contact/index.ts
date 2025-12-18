@@ -8,7 +8,9 @@ import './style.scss';
 import './editor.scss';
 
 export interface ContactBlock {
+	/** Location latitude */
 	lat: number;
+	/** Location longitude */
 	lng: number;
 }
 

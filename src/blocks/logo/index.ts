@@ -6,7 +6,9 @@ import './style.scss';
 import type { BlockConfiguration } from '@wordpress/blocks';
 
 export interface LogoBlock {
+	/** Whether logo is a link */
 	isLink: boolean;
+	/** Link url */
 	url: string;
 }
 

@@ -7,7 +7,9 @@ import { postAuthor as icon } from '@wordpress/icons';
 import './style.scss';
 
 export interface JobOfferBlock {
+	/** Job ad url */
 	url: string;
+	/** Job position */
 	position: string;
 }
 

@@ -10,10 +10,15 @@ import './style.scss';
 import './editor.scss';
 
 export interface DetailsBlock {
+	/** Block open state */
 	isOpen: boolean;
+	/** Block title */
 	summary: string;
+	/** Whether title has icon */
 	hasIcon: boolean;
+	/** Icon image url */
 	icon: string;
+	/** Icon attachment image id */
 	iconId: number;
 }
 

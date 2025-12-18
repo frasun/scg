@@ -8,12 +8,19 @@ import './style.scss';
 import './editor.scss';
 
 export interface CertBlock {
+	/** Certificate name */
 	name: string;
+	/** Certificate industry or category */
 	category: string;
+	/** Certificate badge url */
 	img: string;
+	/** Certificate badge attachment image id */
 	imgId: number;
+	/** Certificate PDF url */
 	cert: string;
+	/** Certificate PDF attachment id */
 	certId: number;
+	/** Certificate PDF filename */
 	certFilename: string;
 }
 
