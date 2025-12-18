@@ -344,20 +344,3 @@ function modify_contact_block_render( $block_content, $block ) {
 
 	return $tags->get_updated_html();
 }
-
-/**
- * Add scroll animation to scg/scroll-trigger block.
- *
- * @param string $block_content The block content.
- * @return string
- */
-function modify_scroll_badge_block_render( $block_content ) {
-	$tags = new \WP_HTML_Tag_Processor( $block_content );
-
-	if ( $tags->next_tag( array( 'class_name' => 'wp-block-scg-scroll-badge' ) ) ) {
-		$tags->set_attribute( 'data-wp-interactive', 'scg/scroll-badge' );
-		$tags->set_attribute( 'data-wp-init', 'callbacks.initScrollBadge' );
-	}
-
-	return $tags->get_updated_html();
-}
