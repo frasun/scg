@@ -20,7 +20,7 @@ interface Details {
 /** { [accordionId]: activeElement } */
 type State = Record< string, number[] >;
 
-const { state, actions } = store( 'scg/details', {
+export const { state, actions } = store( 'scg/details', {
 	state: {} as State,
 	actions: {
 		toggle: () => {
@@ -36,14 +36,20 @@ const { state, actions } = store( 'scg/details', {
 			const ctx = getContext< Details >();
 
 			ctx.isOpen = true;
-			ctx.animation.play( 0 );
+
+			if ( ctx.animation ) {
+				ctx.animation.play( 0 );
+			}
 		},
 		close: () => {
 			const ctx = getContext< Details >();
 
 			ctx.isOpen = false;
-			ctx.animation.timeScale( 1.5 );
-			ctx.animation.reverse();
+
+			if ( ctx.animation ) {
+				ctx.animation.timeScale( 1.5 );
+				ctx.animation.reverse();
+			}
 		},
 		emitToggle: () => {
 			const { accordion, key } = getContext< Details >();

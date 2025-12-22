@@ -6,9 +6,21 @@
  * @subpackage SCG
  */
 
-// Include polyfills.
-require_once __DIR__ . '/../../vendor/yoast/phpunit-polyfills/phpunitpolyfills-autoload.php';
+// Tests env location.
+$tests = getenv( 'WP_TESTS_DIR' );
 
-// Include wp-env bootstrap.php.
-$_tests_dir = getenv( 'WP_TESTS_DIR' );
-require $_tests_dir . '/includes/bootstrap.php';
+// Include polyfills.
+define( 'WP_TESTS_PHPUNIT_POLYFILLS_PATH', dirname( __DIR__, 2 ) . '/vendor/yoast/phpunit-polyfills/phpunitpolyfills-autoload.php' );
+
+// Include WP test functions.
+require_once $tests . '/includes/functions.php';
+
+// Activate theme.
+tests_add_filter(
+	'muplugins_loaded',
+	function () {
+		switch_theme( 'scg' );
+	}
+);
+
+require $tests . '/includes/bootstrap.php';

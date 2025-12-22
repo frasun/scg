@@ -3,7 +3,7 @@
  * Data Counter block rendering tests.
  *
  * @package WordPress
- * @subpackage Blocks
+ * @subpackage SCG
  */
 
 /**
@@ -12,13 +12,6 @@
  * @group blocks
  */
 class DataCounterTest extends WP_UnitTestCase {
-	/**
-	 * Register scg/data-counter block before testing
-	 */
-	public static function set_up_before_class() {
-		register_block_type( __DIR__ . '/../../build/blocks/data-counter' );
-	}
-
 	/**
 	 * It displays prefix and suffix if provided
 	 *
@@ -31,17 +24,15 @@ class DataCounterTest extends WP_UnitTestCase {
 	 * @param string      $expected_after Expected output with given suffix.
 	 */
 	public function test_prefix_and_suffix( $prefix, $suffix, $expected_before, $expected_after ) {
-		$block = new WP_Block(
-			array(
-				'blockName' => 'scg/data-counter',
-				'attrs'     => array(
-					'prefix' => $prefix,
-					'suffix' => $suffix,
-				),
-			)
+		$block = array(
+			'blockName' => 'scg/data-counter',
+			'attrs'     => array(
+				'prefix' => $prefix,
+				'suffix' => $suffix,
+			),
 		);
 
-		$output = $block->render();
+		$output = render_block( $block );
 
 		$this->assertStringContainsString( $expected_before, $output );
 		$this->assertStringContainsString( $expected_after, $output );
@@ -88,16 +79,14 @@ class DataCounterTest extends WP_UnitTestCase {
 	 * @param number $value End display value.
 	 */
 	public function test_init_value( $value ) {
-		$block = new WP_Block(
-			array(
-				'blockName' => 'scg/data-counter',
-				'attrs'     => array(
-					'value' => $value,
-				),
-			)
+		$block = array(
+			'blockName' => 'scg/data-counter',
+			'attrs'     => array(
+				'value' => $value,
+			),
 		);
 
-		$output = $block->render();
+		$output = render_block( $block );
 
 		$this->assertStringContainsString( '<span data-wp-init="callbacks.init">0</span>', $output );
 	}

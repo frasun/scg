@@ -1,12 +1,13 @@
 import { render } from '@testing-library/react';
 import DataCounter from '../../src/blocks/data-counter/edit';
 import formatNumber from '../../src/blocks/data-counter/format';
+import metadata from '../../src/blocks/data-counter/block.json';
 
 const attributes = {
-	value: 2000,
-	step: 100,
-	suffix: '',
-	prefix: '',
+	value: metadata.attributes.value.default,
+	step: metadata.attributes.step.default,
+	suffix: metadata.attributes.suffix.default,
+	prefix: metadata.attributes.prefix.default,
 };
 
 describe( 'data-counter block', () => {
