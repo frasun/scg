@@ -71,7 +71,8 @@ class DataCounterTest extends WP_UnitTestCase {
 	}
 
 	/**
-	 * It animates value when in view. Should render 0 value and a wp-init directive.
+	 * It animates value when in view.
+	 * Should render 0 value and a wp-init directive.
 	 *
 	 * @dataProvider init_value_provider
 	 * @coversNothing

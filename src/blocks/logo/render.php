@@ -6,9 +6,7 @@
  * @subpackage SCG
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
-}
+defined( 'ABSPATH' ) || exit;
 
 use function SCG\wp_kses_svg;
 

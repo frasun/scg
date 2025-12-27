@@ -11,6 +11,8 @@
  * @package SCG
  */
 
+defined( 'ABSPATH' ) || exit;
+
 $context = array(
 	'value' => $attributes['value'] ?? 1000,
 	'step'  => $attributes['step'] ?? 1,

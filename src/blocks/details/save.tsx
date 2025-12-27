@@ -8,9 +8,14 @@ import MarkerIcon from './marker';
 import type { BlockSaveProps } from '@wordpress/blocks';
 import type { DetailsBlock } from '.';
 
+export const DEFAULT_TITLE = __( 'SCG Details', 'scg' );
+
 export default ( { attributes }: BlockSaveProps< DetailsBlock > ) => {
 	const { icon, hasIcon } = attributes;
-	const title = attributes.summary ?? __( 'SCG Details', 'scg' );
+	const title =
+		! attributes.summary || ! attributes.summary.trim().length
+			? DEFAULT_TITLE
+			: attributes.summary;
 
 	return (
 		<div { ...useBlockProps.save() }>

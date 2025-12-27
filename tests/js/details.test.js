@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import Details from '../../src/blocks/details/edit';
-import DetailsSave from '../../src/blocks/details/save';
+import DetailsSave, { DEFAULT_TITLE } from '../../src/blocks/details/save';
 import metadata from '../../src/blocks/details/block.json';
 import { actions } from '../../src/blocks/details/view';
 import { getContext } from '@wordpress/interactivity';
@@ -78,6 +78,19 @@ describe( 'details block', () => {
 
 		const el = container.querySelector( '[data-open]' );
 		expect( el ).toHaveAttribute( 'data-open', 'true' );
+	} );
+
+	it( 'defers to default title if summary is empty (save)', () => {
+		const { container } = render(
+			<DetailsSave
+				attributes={ { ...defaultAttributes, summary: '   ' } }
+			/>
+		);
+		const title = container.querySelector(
+			'.wp-block-scg-details__summary-title p'
+		);
+
+		expect( title ).toHaveTextContent( DEFAULT_TITLE );
 	} );
 
 	it( 'can be toggled', () => {

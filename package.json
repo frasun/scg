@@ -11,8 +11,10 @@
 		"lint": "npm run lint:js && npm run lint:style",
 		"packages-update": "wp-scripts packages-update",
 		"test:js": "wp-scripts --no-deprecation test-unit-js",
+		"test:js-coverage": "wp-scripts --no-deprecation test-unit-js --collect-coverage",
 		"env:start": "wp-env start",
-		"test:php": "wp-env run tests-cli --env-cwd=wp-content/themes/scg vendor/bin/phpunit"
+		"env:start-coverage": "wp-env start --xdebug=coverage",
+		"test:php": "wp-env run tests-cli --env-cwd=wp-content/themes/scg vendor/bin/phpunit --coverage-html tests/php/coverage"
 	},
 	"author": "seekthekingdom",
 	"license": "ISC",

@@ -11,6 +11,8 @@
  * @package SCG
  */
 
+defined( 'ABSPATH' ) || exit;
+
 use function SCG\wp_kses_svg;
 
 // Initial block context.
