@@ -75,7 +75,6 @@ class DetailsTest extends WP_UnitTestCase {
 		$this->assertSame( self::$tags->get_attribute( 'data-wp-on--keydown' ), 'actions.spaceToggle' );
 	}
 
-
 	/**
 	 * Test accessibility by screen readers.
 	 * Summary element should have [aria-expanded] defined by isOpen, [aria-controls] pointing to the content element, [role="button].
@@ -104,5 +103,47 @@ class DetailsTest extends WP_UnitTestCase {
 
 		self::$tags->seek( 'content' );
 		$this->assertSame( self::$tags->get_attribute( 'aria-labelledby' ), $summary_id );
+	}
+
+	/**
+	 * Test replacing icon <img> with inline SVG.
+	 *
+	 * @coversNothing
+	 */
+	public function test_summary_icon() {
+		$icon_file = 'tests/fixtures/test.svg';
+		$icon = file_get_contents( get_theme_file_path( $icon_file ) );  //@codingStandardsIgnoreLine.
+		$icon_url  = get_theme_file_uri( $icon_file );
+		$content   = <<<HTML
+		<!-- wp:scg/details {"icon":"$icon_url"} -->
+		<div class="wp-block-scg-details">
+			<div class="wp-block-scg-details__summary">
+				<img src="$icon_url" />
+				<div class="wp-block-scg-details__summary-title">Summary</div>
+			</div>
+			<div class="wp-block-scg-details__content">Content</div>
+		</div>
+		<!-- /wp:scg/details -->
+		HTML;
+
+		add_filter(
+			'pre_http_request',
+			function ( $preempt, $args, $url ) use ( $icon_url, $icon ) {
+				if ( $url === $icon_url ) {
+					return array(
+						'response' => array( 'code' => 200 ),
+						'body'     => $icon,
+					);
+				}
+				return $preempt;
+			},
+			10,
+			3
+		);
+
+		$rendered = do_blocks( $content );
+
+		$this->assertStringContainsString( $icon, $rendered );
+		$this->assertStringNotContainsString( "<img src=\"{$icon_url}\" />", $rendered );
 	}
 }
