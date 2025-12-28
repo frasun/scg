@@ -22,13 +22,13 @@ const MAP_OPTIONS = {
 	zoomControl: true,
 	clickableIcons: false,
 };
-const DEFAULT_LAT = -33.861838;
-const DEFAULT_LNG = 151.362549;
-const DEFAULT_ZOOM = 8;
-const PREFERRED_ZOOM = 15;
+export const DEFAULT_LAT = -33.861838;
+export const DEFAULT_LNG = 151.362549;
+export const DEFAULT_ZOOM = 8;
+export const PREFERRED_ZOOM = 15;
 const PIN = `<svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12.8281" r="12" fill="#F9A51A"/></svg>`;
 
-const { callbacks } = store( 'scg/contact', {
+export const { callbacks } = store( 'scg/contact', {
 	callbacks: {
 		*setupMaps() {
 			const { apiKey } = getContext< Contact >();
