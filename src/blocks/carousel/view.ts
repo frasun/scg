@@ -1,8 +1,8 @@
 import { store, getElement } from '@wordpress/interactivity';
 
-const ANIMATION_TIME_PER_CHILD = 10;
+export const ANIMATION_TIME_PER_CHILD = 10;
 
-store( 'scg/carousel', {
+export const { callbacks } = store( 'scg/carousel', {
 	callbacks: {
 		initCarousel: () => {
 			const el = getElement().ref as HTMLElement;
