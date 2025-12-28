@@ -169,13 +169,13 @@ function modify_accordion_block_render( $block_content ) {
 			}
 
 			if ( $depth === $depth_details && $tags->has_class( 'wp-block-scg-details' ) ) {
-				$context = json_decode( $tags->get_attribute( 'data-wp-context' ) );
+				$context = json_decode( $tags->get_attribute( 'data-wp-context' ), true );
 
-				if ( isset( $context->accordion ) ) {
+				if ( isset( $context['accordion'] ) ) {
 					continue;
 				}
 
-				$is_open = $context->{'isOpen'} ?? false;
+				$is_open = $context['isOpen'] ?? false;
 
 				if ( $is_open ) {
 					array_push( $is_active, $index );

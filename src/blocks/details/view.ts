@@ -20,7 +20,7 @@ interface Details {
 /** { [accordionId]: activeElement } */
 type State = Record< string, number[] >;
 
-export const { state, actions } = store( 'scg/details', {
+export const { state, actions, callbacks } = store( 'scg/details', {
 	state: {} as State,
 	actions: {
 		toggle: () => {

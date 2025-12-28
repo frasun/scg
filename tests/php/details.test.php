@@ -20,11 +20,10 @@ class DetailsTest extends WP_UnitTestCase {
 	private static $tags;
 
 	/**
-	 * Render block for tests
+	 * Render block for tests.
+	 * Select the parent scg/details element.
 	 */
-	public function set_up() {
-		parent::set_up();
-
+	public static function set_up_before_class() {
 		$content = <<<HTML
 			<!-- wp:scg/details {"isOpen":true} -->
 			<div class="wp-block-scg-details">
@@ -38,16 +37,26 @@ class DetailsTest extends WP_UnitTestCase {
 
 		$rendered   = do_blocks( $content );
 		self::$tags = new WP_HTML_Tag_Processor( $rendered );
+
+		self::$tags->next_tag( array( 'class_name' => 'wp-block-scg-details' ) );
+		self::$tags->set_bookmark( 'parent' );
+	}
+
+	/**
+	 * Come back to parent scg/details element.
+	 */
+	public function tear_down() {
+		self::$tags->seek( 'parent' );
+		parent::tear_down();
 	}
 
 	/**
 	 * It can be open by default.
 	 * Block container should have HTML attribute [data-open="true"].
 	 *
-	 * @covers SCG\modify_details_block_render
+	 * @coversNothing
 	 */
 	public function test_is_open() {
-		self::$tags->next_tag( array( 'class_name' => 'wp-block-scg-details' ) );
 		$this->assertSame( self::$tags->get_attribute( 'data-open' ), 'true' );
 	}
 
@@ -56,10 +65,9 @@ class DetailsTest extends WP_UnitTestCase {
 	 * Block container should have HTML attribute [data-wp-bind--data-open] associated with isOpen value.
 	 * Block summary element should have HTML attributes [data-wp-on--click, data-wp-on--keydown] with associated actions from the store.
 	 *
-	 * @covers SCG\modify_details_block_render
+	 * @coversNothing
 	 */
 	public function test_toggle() {
-		self::$tags->next_tag( array( 'class_name' => 'wp-block-scg-details' ) );
 		$this->assertSame( self::$tags->get_attribute( 'data-wp-bind--data-open' ), 'context.isOpen' );
 
 		self::$tags->next_tag( array( 'class_name' => 'wp-block-scg-details__summary' ) );
