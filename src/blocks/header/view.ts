@@ -2,9 +2,9 @@ import { store, getElement, getContext } from '@wordpress/interactivity';
 import { gsap } from 'gsap';
 import { state as themeState } from '../../scripts/scg';
 
-const MOBILE_WIDTH = 781;
+export const MOBILE_WIDTH = 781;
 const MOBILE_HEIGHT = 799;
-const MENU_LINKS = 'a:not([target="_blank"])';
+export const MENU_LINKS = 'a:not([target="_blank"])';
 const ANIMATION_MEDIA_QUERY = `((max-width: ${ MOBILE_WIDTH }px) or (max-height: ${ MOBILE_HEIGHT }px)) and (prefers-reduced-motion: no-preference)`;
 const MENU_ITEMS =
 	'.wp-block-scg-header :where(.wp-block-navigation-item, .wp-block-template-part, .trp-block-container)';
@@ -23,7 +23,7 @@ interface HeaderContext {
 	element: HTMLElement;
 }
 
-const { callbacks } = store( 'scg/header', {
+export const { actions, callbacks } = store( 'scg/header', {
 	actions: {
 		toggleOpen: () => {
 			const ctx = getContext< HeaderContext >();

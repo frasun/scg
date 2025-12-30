@@ -39,7 +39,7 @@ class ContactTest extends WP_UnitTestCase {
 		$rendered = do_blocks( $content );
 		$tags     = new WP_HTML_Tag_Processor( $rendered );
 
-		$tags->next_tag( array( 'class_name', 'wp-block-scg-contact' ) );
+		$tags->next_tag( array( 'class_name' => 'wp-block-scg-contact' ) );
 		$this->assertSame( 'scg/contact', $tags->get_attribute( 'data-wp-interactive' ) );
 
 		$context = json_decode( $tags->get_attribute( 'data-wp-context' ), true );

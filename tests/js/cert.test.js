@@ -19,16 +19,6 @@ jest.mock( '../../src/blocks/cert/marker', () => {
 	return jest.fn( () => <div data-testid="marker" /> );
 } );
 
-jest.mock( 'gsap/ScrollToPlugin', () => ( {
-	__esModule: true,
-	default: {},
-} ) );
-
-jest.mock( 'gsap/ScrollTrigger', () => ( {
-	__esModule: true,
-	default: {},
-} ) );
-
 describe( 'cert block', () => {
 	it( 'displays category if provided', () => {
 		const { container } = render(

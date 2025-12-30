@@ -1,15 +1,5 @@
 import { state, actions, callbacks } from '../../src/blocks/cert-viewer/view';
 
-jest.mock( 'gsap/ScrollToPlugin', () => ( {
-	__esModule: true,
-	default: {},
-} ) );
-
-jest.mock( 'gsap/ScrollTrigger', () => ( {
-	__esModule: true,
-	default: {},
-} ) );
-
 describe( 'cert-viewer block', () => {
 	it( 'is closed by default', () => {
 		expect( state.isModalOpen ).toBe( false );
