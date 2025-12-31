@@ -13,16 +13,18 @@
  */
 class ContactTest extends WP_UnitTestCase {
 	/**
-	 * It displays map when coordinations are provided.
-	 * Should pass Google Maps API key, Map ID to block and lat/lng coords to block.
+	 * It displays map if keys and coords are provided.
+	 * Should pass lat/lng coords to block context.
+	 * Should pass Google Maps API key and Map ID to block config.
 	 *
 	 * @coversNothing
 	 */
 	public function test_map() {
-		$test_api_key = 'test-api-key-123';
-		$test_map_id  = 'test-map-id-456';
-		$test_lat     = 1.21345;
-		$test_lng     = 123.1234;
+		$test_api_key    = 'test-api-key-123';
+		$test_map_id     = 'test-map-id-456';
+		$test_lat        = 1.21345;
+		$test_lng        = 123.1234;
+		$block_namespace = 'scg/contact';
 
 		update_option( 'google_maps_api_key', $test_api_key );
 		update_option( 'google_maps_map_id', $test_map_id );
@@ -40,15 +42,17 @@ class ContactTest extends WP_UnitTestCase {
 		$tags     = new WP_HTML_Tag_Processor( $rendered );
 
 		$tags->next_tag( array( 'class_name' => 'wp-block-scg-contact' ) );
-		$this->assertSame( 'scg/contact', $tags->get_attribute( 'data-wp-interactive' ) );
+		$this->assertSame( $block_namespace, $tags->get_attribute( 'data-wp-interactive' ) );
 
 		$context = json_decode( $tags->get_attribute( 'data-wp-context' ), true );
-		$this->assertSame( $test_api_key, $context['apiKey'] );
-		$this->assertSame( $test_map_id, $context['mapId'] );
 		$this->assertSame( $test_lat, $context['lat'] );
 		$this->assertSame( $test_lng, $context['lng'] );
 
 		$tags->next_tag( array( 'class_name' => 'wp-block-scg-contact__map' ) );
 		$this->assertSame( 'callbacks.setupMaps', $tags->get_attribute( 'data-wp-init' ) );
+
+		$config = wp_interactivity_config( $block_namespace );
+		$this->assertSame( $test_api_key, $config['apiKey'] );
+		$this->assertSame( $test_map_id, $config['mapId'] );
 	}
 }

@@ -1,6 +1,6 @@
 /* eslint-disable */
 // @ts-nocheck
-export default ( apiKey: string ) => {
+export default ( apiKey: string, language: string ) => {
 	( ( g ) => {
 		let h,
 			a,
@@ -46,5 +46,6 @@ export default ( apiKey: string ) => {
 		v: 'weekly',
 		// Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
 		// Add other bootstrap parameters as needed, using camel case.
+		language
 	} );
 };

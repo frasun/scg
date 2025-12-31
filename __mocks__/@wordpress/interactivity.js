@@ -8,3 +8,5 @@ export const getElement = jest.fn( () => ( {
 	ref: null,
 	attributes: {},
 } ) );
+
+export const getConfig = jest.fn( () => ( {} ) );

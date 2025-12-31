@@ -327,10 +327,8 @@ function enqueue_cert_viewer_assets() {
 function modify_contact_block_render( $block_content, $block ) {
 	$tags    = new \WP_HTML_Tag_Processor( $block_content );
 	$context = array(
-		'lat'    => $block['attrs']['lat'],
-		'lng'    => $block['attrs']['lng'],
-		'apiKey' => get_option( 'google_maps_api_key' ),
-		'mapId'  => get_option( 'google_maps_map_id' ),
+		'lat' => $block['attrs']['lat'],
+		'lng' => $block['attrs']['lng'],
 	);
 
 	if ( $tags->next_tag( array( 'class_name' => 'wp-block-scg-contact' ) ) ) {
@@ -341,6 +339,14 @@ function modify_contact_block_render( $block_content, $block ) {
 	if ( $tags->next_tag( array( 'class_name' => 'wp-block-scg-contact__map' ) ) ) {
 		$tags->set_attribute( 'data-wp-init', 'callbacks.setupMaps' );
 	}
+
+	wp_interactivity_config(
+		'scg/contact',
+		array(
+			'apiKey' => get_option( 'google_maps_api_key' ),
+			'mapId'  => get_option( 'google_maps_map_id' ),
+		)
+	);
 
 	return $tags->get_updated_html();
 }
