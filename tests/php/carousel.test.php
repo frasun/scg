@@ -19,7 +19,7 @@ class CarouselTest extends WP_UnitTestCase {
 	 * @coversNothing
 	 */
 	public function test_loop() {
-		$content = <<<HTML
+		$content = <<<'HTML'
 			<!-- wp:scg/carousel -->
 			<div class="wp-block-scg-carousel">
 				<div class="wp-block-scg-carousel__wrapper"></div>

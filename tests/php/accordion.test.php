@@ -36,7 +36,7 @@ class AccordionTest extends WP_UnitTestCase {
 		 * [2] accordion with two children scg/details elements with the 2nd one with {isOpen: true}
 		 * [3] accordion with two children scg/details elements without isOpen set
 		 */
-		$content = <<<HTML
+		$content = <<<'HTML'
 			<!-- wp:scg/accordion -->
 			<div class="wp-block-scg-accordion">
 				<!-- wp:scg/details {"isOpen":true} -->

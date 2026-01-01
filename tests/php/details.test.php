@@ -24,7 +24,7 @@ class DetailsTest extends WP_UnitTestCase {
 	 * Select the parent scg/details element.
 	 */
 	public static function set_up_before_class() {
-		$content = <<<HTML
+		$content = <<<'HTML'
 			<!-- wp:scg/details {"isOpen":true} -->
 			<div class="wp-block-scg-details">
 				<div class="wp-block-scg-details__summary">
