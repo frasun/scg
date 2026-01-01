@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import DataCounter from '../../src/blocks/data-counter/edit';
 import formatNumber from '../../src/blocks/data-counter/format';
 import metadata from '../../src/blocks/data-counter/block.json';
@@ -45,5 +45,15 @@ describe( 'data-counter block', () => {
 		expect( container ).toHaveTextContent(
 			`${ prefix }${ formatNumber( attributes.value ) }${ suffix }`
 		);
+
+		expect( screen.getByTestId( 'suffix' ) ).toBeInTheDocument();
+		expect( screen.getByTestId( 'prefix' ) ).toBeInTheDocument();
+	} );
+
+	it( 'sets value and animation settings', () => {
+		render( <DataCounter attributes={ attributes } /> );
+
+		expect( screen.getByTestId( 'value' ) ).toBeInTheDocument();
+		expect( screen.getByTestId( 'step' ) ).toBeInTheDocument();
 	} );
 } );

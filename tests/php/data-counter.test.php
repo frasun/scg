@@ -78,18 +78,25 @@ class DataCounterTest extends WP_UnitTestCase {
 	 * @coversNothing
 	 *
 	 * @param number $value End display value.
+	 * @param number $step Value animation step.
 	 */
-	public function test_init_value( $value ) {
+	public function test_init_values( $value, $step ) {
 		$block = array(
 			'blockName' => 'scg/data-counter',
 			'attrs'     => array(
 				'value' => $value,
+				'step'  => $step,
 			),
 		);
 
 		$output = render_block( $block );
-
 		$this->assertStringContainsString( '<span data-wp-init="callbacks.init">0</span>', $output );
+
+		$tags = new WP_HTML_Tag_Processor( $output );
+		$tags->next_tag( array( 'class_name' => 'wp-block-scg-data-counter' ) );
+		$context = json_decode( $tags->get_attribute( 'data-wp-context' ), true );
+		$this->assertSame( $value, $context['value'] );
+		$this->assertSame( $step, $context['step'] );
 	}
 
 	/**
@@ -97,11 +104,11 @@ class DataCounterTest extends WP_UnitTestCase {
 	 */
 	public function init_value_provider() {
 		return array(
-			'1000'    => array( 1000 ),
-			'100'     => array( 100 ),
-			'10'      => array( 10 ),
-			'1000000' => array( 1000000 ),
-			'1'       => array( 1 ),
+			'1000'    => array( 1000, 124 ),
+			'100'     => array( 100, 2 ),
+			'10'      => array( 10, 10000 ),
+			'1000000' => array( 1000000, 11 ),
+			'1'       => array( 1, 9 ),
 		);
 	}
 }

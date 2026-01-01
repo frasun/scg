@@ -102,6 +102,7 @@ export default ( {
 											: __( 'Select' ) }
 									</ToolbarButton>
 								) }
+								data-testid="iconId"
 							/>
 						</MediaUploadCheck>
 					</ToolbarGroup>
@@ -114,6 +115,7 @@ export default ( {
 						checked={ isOpen }
 						label={ __( 'Open', 'scg' ) }
 						onChange={ ( val ) => setAttributes( { isOpen: val } ) }
+						data-testid="isOpen"
 					/>
 					<ToggleControl
 						__nextHasNoMarginBottom
@@ -122,6 +124,7 @@ export default ( {
 						onChange={ ( val ) =>
 							setAttributes( { hasIcon: val } )
 						}
+						data-testid="hasIcon"
 					/>
 				</PanelBody>
 			</InspectorControls>

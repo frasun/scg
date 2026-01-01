@@ -33,6 +33,7 @@ export default ( {
 				label={ __( 'Category', 'scg' ) }
 				value={ category }
 				onChange={ ( val ) => setAttributes( { category: val } ) }
+				data-testid="category"
 			/>
 			<Flex className="components-base-control" direction="column">
 				<FlexItem>
@@ -40,7 +41,7 @@ export default ( {
 				</FlexItem>
 				{ img && (
 					<FlexItem className="wp-block-scg-cert__badge-control">
-						<img src={ img } alt={ name } />
+						<img src={ img } alt={ name } data-testid="img" />
 					</FlexItem>
 				) }
 				<FlexItem>
@@ -60,6 +61,7 @@ export default ( {
 										<Button
 											onClick={ open }
 											variant="secondary"
+											data-testid="imgId"
 										>
 											{ imgId
 												? __( 'Replace' )
@@ -77,6 +79,7 @@ export default ( {
 														img: undefined,
 													} )
 												}
+												data-testid="removeImg"
 											>
 												{ __( 'Remove' ) }
 											</Button>
@@ -113,7 +116,10 @@ export default ( {
 													<Icon icon={ page } />
 												</FlexItem>
 												<FlexItem>
-													<Text weight="bold">
+													<Text
+														weight="bold"
+														data-testid="certFilename"
+													>
 														{ certFilename }
 													</Text>
 												</FlexItem>
@@ -126,6 +132,7 @@ export default ( {
 												<Button
 													onClick={ open }
 													variant="secondary"
+													data-testid="certId"
 												>
 													{ certId
 														? __( 'Replace' )
@@ -145,6 +152,7 @@ export default ( {
 																	undefined,
 															} )
 														}
+														data-testid="removeCertId"
 													>
 														{ __( 'Remove' ) }
 													</Button>

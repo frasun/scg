@@ -2,8 +2,13 @@ export const useBlockProps = Object.assign( ( props ) => props, {
 	save: jest.fn( ( props ) => props ),
 } );
 
-export const InspectorControls = ( { children } ) => (
-	<div data-component="inspector-controls">{ children }</div>
+export const InspectorControls = ( { children, ...props } ) => (
+	<div
+		data-component="inspector-controls"
+		data-testid={ props[ 'data-testid' ] }
+	>
+		{ children }
+	</div>
 );
 
 export const useInnerBlocksProps = Object.assign(
@@ -23,24 +28,44 @@ export const useInnerBlocksProps = Object.assign(
 	}
 );
 
-export const RichText = ( { value, placeholder, tagName = 'p' } ) => {
+export const RichText = ( { value, placeholder, tagName = 'p', ...props } ) => {
 	const Tag = tagName;
-	return <Tag data-component="rich-text">{ value || placeholder }</Tag>;
+	return (
+		<Tag data-component="rich-text" data-testid={ props[ 'data-testid' ] }>
+			{ value || placeholder }
+		</Tag>
+	);
 };
 
-RichText.Content = ( { value, tagName = 'div' } ) => {
+RichText.Content = ( { value, tagName = 'div', ...props } ) => {
 	const Tag = tagName;
-	return <Tag data-component="rich-text-content">{ value }</Tag>;
+	return (
+		<Tag
+			data-component="rich-text-content"
+			data-testid={ props[ 'data-testid' ] }
+		>
+			{ value }
+		</Tag>
+	);
 };
 
-export const BlockControls = ( { children } ) => (
-	<div data-component="block-controls">{ children }</div>
+export const BlockControls = ( { children, ...props } ) => (
+	<div data-component="block-controls" data-testid={ props[ 'data-testid' ] }>
+		{ children }
+	</div>
 );
 
-export const MediaUpload = ( { children } ) => (
-	<div data-component="media-upload">{ children }</div>
+export const MediaUpload = ( { render: Render, ...props } ) => (
+	<div data-component="media-upload" data-testid={ props[ 'data-testid' ] }>
+		<Render />
+	</div>
 );
 
-export const MediaUploadCheck = ( { children } ) => (
-	<div data-component="media-upload-check">{ children }</div>
+export const MediaUploadCheck = ( { children, ...props } ) => (
+	<div
+		data-component="media-upload-check"
+		data-testid={ props[ 'data-testid' ] }
+	>
+		{ children }
+	</div>
 );

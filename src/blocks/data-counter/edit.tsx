@@ -28,6 +28,7 @@ export default ( {
 						onChange={ ( val ) =>
 							setAttributes( { value: Number( val ) } )
 						}
+						data-testid="value"
 					/>
 					<NumberControl
 						__next40pxDefaultSize
@@ -36,18 +37,21 @@ export default ( {
 						onChange={ ( val ) =>
 							setAttributes( { step: Number( val ) } )
 						}
+						data-testid="step"
 					/>
 					<InputControl
 						__next40pxDefaultSize
 						label={ __( 'Prefix', 'scg' ) }
 						value={ prefix }
 						onChange={ ( val ) => setAttributes( { prefix: val } ) }
+						data-testid="prefix"
 					/>
 					<InputControl
 						__next40pxDefaultSize
 						label={ __( 'Suffix', 'scg' ) }
 						value={ suffix }
 						onChange={ ( val ) => setAttributes( { suffix: val } ) }
+						data-testid="suffix"
 					/>
 				</PanelBody>
 			</InspectorControls>

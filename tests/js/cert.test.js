@@ -11,10 +11,6 @@ const attributes = {
 	name: metadata.attributes.name.default,
 };
 
-jest.mock( '../../src/blocks/cert/controls', () => {
-	return jest.fn( () => null );
-} );
-
 jest.mock( '../../src/blocks/cert/marker', () => {
 	return jest.fn( () => <div data-testid="marker" /> );
 } );
@@ -30,11 +26,13 @@ describe( 'cert block', () => {
 
 		expect( categoryElement ).toBeInTheDocument();
 		expect( categoryElement ).toHaveTextContent( CATEGORY );
+
+		expect( screen.getByTestId( 'category' ) ).toBeInTheDocument();
 	} );
 
 	it( 'displays cert image if provided', () => {
 		const { container } = render(
-			<Cert attributes={ { ...attributes, img: IMAGE } } />
+			<Cert attributes={ { ...attributes, img: IMAGE, imgId: 123 } } />
 		);
 		const badgeElement = container.querySelector(
 			'.wp-block-scg-cert__badge'
@@ -43,6 +41,10 @@ describe( 'cert block', () => {
 		expect( badgeElement ).toBeInTheDocument();
 		expect( badgeElement ).toHaveAttribute( 'src', IMAGE );
 		expect( badgeElement ).toHaveAttribute( 'alt', attributes.name );
+
+		expect( screen.getByTestId( 'img' ) ).toBeInTheDocument();
+		expect( screen.getByTestId( 'imgId' ) ).toHaveTextContent( 'Replace' );
+		expect( screen.getByTestId( 'removeImg' ) ).toBeInTheDocument();
 	} );
 
 	it( 'displays marker icon if it links to a certificate', () => {
@@ -64,6 +66,17 @@ describe( 'cert block', () => {
 		expect( categoryElement ).not.toBeInTheDocument();
 		expect( badgeElement ).not.toBeInTheDocument();
 		expect( marker ).not.toBeInTheDocument();
+
+		expect( screen.getByTestId( 'imgId' ) ).toHaveTextContent( 'Select' );
+		expect( screen.queryByTestId( 'removeImg' ) ).not.toBeInTheDocument();
+
+		expect(
+			screen.queryByTestId( 'certFilename' )
+		).not.toBeInTheDocument();
+		expect( screen.getByTestId( 'certId' ) ).toHaveTextContent( 'Select' );
+		expect(
+			screen.queryByTestId( 'removeCertId' )
+		).not.toBeInTheDocument();
 	} );
 
 	it( 'opens modal with certificate', () => {
