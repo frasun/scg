@@ -31,7 +31,8 @@
 		"@wordpress/scripts": "^31.1.0",
 		"path": "^0.12.7",
 		"typescript": "~5.3.0",
-		"webpack-remove-empty-scripts": "^1.1.1"
+		"webpack-remove-empty-scripts": "^1.1.1",
+		"wordpress-jest-mocks": "github:frasun/wordpress-jest-mocks"
 	},
 	"dependencies": {
 		"@wordpress/interactivity": "^6.36.0",
