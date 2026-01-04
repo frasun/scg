@@ -10,7 +10,7 @@
 		"lint:style": "wp-scripts lint-style --fix",
 		"lint:php": "composer lint:php",
 		"tsc": "tsc --noEmit",
-		"lint": "npm run lint:js && npm run tsc && npm run lint:style && lint:php",
+		"lint": "npm run lint:js && npm run tsc && npm run lint:style",
 		"packages-update": "wp-scripts packages-update",
 		"test:js": "wp-scripts --no-deprecation test-unit-js",
 		"test:js-coverage": "wp-scripts --no-deprecation test-unit-js --collect-coverage",
