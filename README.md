@@ -3,6 +3,8 @@
 Custom block theme for a logistics company, built from a design project.
 Full Gutenberg site editing with custom blocks using TypeScript, Interactivity API, and GSAP.
 
+![](site.png)
+
 ## Blocks
 
 ```bash
