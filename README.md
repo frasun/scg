@@ -49,8 +49,3 @@ npm run test:js      # Jest unit tests
 npm run test:php     # PHPUnit via wp-env
 npm run env:start    # start wp-env environment
 ```
-
-## Stack
-TypeScript - PHP - SCSS<br>
-WordPress - Gutenberg - Interactivity API - wp-env<br>
-GSAP - PDF.js - Jest - PHPUnit<br>
